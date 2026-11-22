@@ -1,0 +1,1510 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>M-KING Food</title>
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        background-color: bisque;
+        font-family: Georgia, "Times New Roman", serif;
+        color: #3d2b1f;
+      }
+      /* ---------- HERO (your original design) ---------- */
+      .box1 {
+        width: 100%;
+        min-height: 340px;
+        background-color: #4a2c1a;
+        border-radius: 0 0 30px 30px;
+        position: relative;
+        padding: 62px 20px 90px;
+      }
+      h1 {
+        color: #fff8e7;
+        text-align: center;
+        margin: 0 0 10px;
+      }
+      .box1 p {
+        font-size: 17px;
+        line-height: 1.6;
+        text-align: center;
+        color: #fcecd2;
+        max-width: 620px;
+        margin: 0 auto;
+      }
+      .food-types {
+        margin-top: 20px;
+        font-weight: bold;
+        text-align: center;
+        color: #e8a15b;
+      }
+      .food-types span {
+        margin: 0 8px;
+        display: inline-block;
+      }
+      .news-ticker {
+        width: 40%;
+        min-width: 260px;
+        overflow: hidden;
+        background-color: #e9a86b;
+        color: #3d2b1f;
+        padding: 10px 0;
+        white-space: nowrap;
+        border-radius: 30px;
+        margin: 16px auto 0;
+      }
+      .ticker-text {
+        display: flex;
+        padding-left: 100%;
+        animation: ticker 15s linear infinite;
+        font-size: 18px;
+        font-weight: bold;
+      }
+      @keyframes ticker {
+        0% {
+          transform: translateX(0);
+        }
+        100% {
+          transform: translateX(-100%);
+        }
+      }
+      .menu {
+        position: absolute;
+        bottom: 25px;
+        right: 30px;
+        display: inline-block;
+        padding: 15px 30px;
+        background-color: #fff8e7;
+        color: #4a2c1a;
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 16px;
+        letter-spacing: 1px;
+        border-radius: 30px;
+        transition: 0.4s ease;
+      }
+      .menu:hover {
+        background-color: #d8b596;
+        color: #fff8e7;
+        transform: translateY(-3px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+      }
+      .hero-img {
+        display: block;
+        width: 340px;
+        max-width: 80%;
+        height: auto;
+        margin: -70px auto 0;
+        position: relative;
+      }
+
+      /* ---------- MENU ---------- */
+      #menu {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 50px 20px 30px;
+        scroll-margin-top: 10px;
+      }
+      #menu > h2 {
+        text-align: center;
+        font-size: 34px;
+        color: #4a2c1a;
+        margin: 0 0 6px;
+      }
+      .sub {
+        text-align: center;
+        margin: 0 0 24px;
+        font-style: italic;
+      }
+      .tabs {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        justify-content: center;
+        margin-bottom: 30px;
+      }
+      .tabs button {
+        font: inherit;
+        font-weight: bold;
+        padding: 10px 20px;
+        border-radius: 30px;
+        border: 2px solid #4a2c1a;
+        background: transparent;
+        color: #4a2c1a;
+        cursor: pointer;
+        transition: 0.3s ease;
+      }
+      .tabs button:hover {
+        background: #d8b596;
+      }
+      .tabs button.on {
+        background: #4a2c1a;
+        color: #fff8e7;
+      }
+      .tabs button:focus-visible {
+        outline: 3px solid #e8a15b;
+        outline-offset: 2px;
+      }
+      .group {
+        display: none;
+        gap: 24px;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      }
+      .group.on {
+        display: grid;
+      }
+      .sec {
+        background: #fff8e7;
+        border-radius: 24px;
+        padding: 22px 24px;
+      }
+      .sec h3 {
+        margin: 0 0 12px;
+        color: #b5233a;
+        font-size: 24px;
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        gap: 10px;
+      }
+      .sec h3 small {
+        font-size: 12px;
+        color: #4a2c1a;
+        letter-spacing: 1px;
+        font-weight: normal;
+      }
+      .row {
+        display: flex;
+        justify-content: space-between;
+        gap: 14px;
+        padding: 7px 0;
+        border-bottom: 1px dotted #d8b596;
+      }
+      .row:last-child {
+        border-bottom: 0;
+      }
+      .row b {
+        display: block;
+        font-size: 15px;
+        letter-spacing: 0.5px;
+      }
+      .row i {
+        display: block;
+        font-size: 13px;
+        color: #7a5a44;
+        line-height: 1.4;
+      }
+      .pr {
+        white-space: nowrap;
+        font-weight: bold;
+        text-align: right;
+        min-width: 90px;
+      }
+      .note {
+        margin: 10px 0 0;
+        font-size: 14px;
+        font-style: italic;
+      }
+
+      #info {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 30px 20px 0;
+        display: grid;
+        gap: 24px;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        scroll-margin-top: 10px;
+      }
+      #info h2 {
+        margin: 0 0 14px;
+        color: #b5233a;
+        font-size: 26px;
+      }
+      .card {
+        background: #fff8e7;
+        border-radius: 24px;
+        padding: 24px;
+      }
+      .card p {
+        margin: 0 0 12px;
+        line-height: 1.5;
+      }
+      .card a.tel {
+        color: #4a2c1a;
+        font-weight: bold;
+      }
+      .btn {
+        display: inline-block;
+        font: inherit;
+        font-weight: bold;
+        padding: 12px 26px;
+        border-radius: 30px;
+        border: 0;
+        background: #4a2c1a;
+        color: #fff8e7;
+        text-decoration: none;
+        cursor: pointer;
+        transition: 0.3s ease;
+      }
+      .btn:hover {
+        background: #7a4a2a;
+        transform: translateY(-2px);
+      }
+      .btn:disabled {
+        opacity: 0.45;
+        cursor: not-allowed;
+        transform: none;
+      }
+      .hours {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 6px;
+      }
+      .hours td {
+        padding: 7px 0;
+        border-bottom: 1px dotted #d8b596;
+      }
+      .hours td:last-child {
+        text-align: right;
+      }
+      .hours tr.today {
+        font-weight: bold;
+        color: #b5233a;
+      }
+      .warn {
+        margin-top: 12px;
+        padding: 10px 14px;
+        border-radius: 14px;
+        background: #fbe3b0;
+        font-size: 14px;
+      }
+      .stars {
+        display: flex;
+        gap: 6px;
+        margin: 6px 0 14px;
+      }
+      .stars button {
+        background: none;
+        border: 0;
+        font-size: 42px;
+        line-height: 1;
+        color: #d8b596;
+        cursor: pointer;
+        padding: 0 2px;
+        transition:
+          transform 0.15s ease,
+          color 0.15s ease;
+      }
+      .stars button.on {
+        color: #f2b632;
+      }
+      .stars button:hover {
+        transform: scale(1.15);
+      }
+      .stars button:focus-visible {
+        outline: 3px solid #e8a15b;
+        border-radius: 8px;
+      }
+      .rate-label {
+        min-height: 1.4em;
+        font-weight: bold;
+        color: #4a2c1a;
+        margin: 0 0 10px;
+      }
+      .card input,
+      .card textarea {
+        width: 100%;
+        font: inherit;
+        padding: 11px 14px;
+        border: 2px solid #d8b596;
+        border-radius: 14px;
+        background: #fff;
+        margin-bottom: 12px;
+        color: #3d2b1f;
+      }
+      .card input:focus,
+      .card textarea:focus {
+        outline: 0;
+        border-color: #4a2c1a;
+      }
+      .thanks {
+        margin-top: 12px;
+        font-weight: bold;
+        color: #2f6b1f;
+      }
+      .pr {
+        display: flex;
+        gap: 6px;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+        align-content: flex-start;
+        min-width: 0;
+      }
+      .ord {
+        font: inherit;
+        font-weight: bold;
+        font-size: 14px;
+        padding: 4px 12px;
+        border-radius: 20px;
+        border: 2px solid #4a2c1a;
+        background: transparent;
+        color: #4a2c1a;
+        cursor: pointer;
+        white-space: nowrap;
+        transition: 0.25s ease;
+      }
+      .ord:hover,
+      .ord:focus-visible {
+        background: #25d366;
+        border-color: #25d366;
+        color: #fff;
+        outline: 0;
+      }
+      .hint {
+        text-align: center;
+        margin: -14px 0 24px;
+        font-size: 14px;
+        color: #7a5a44;
+      }
+      .btn.wa {
+        background: #25d366;
+        color: #fff;
+        margin-left: 8px;
+      }
+      .btn.wa:hover {
+        background: #1da851;
+      }
+      .wa-float {
+        position: fixed;
+        right: 18px;
+        bottom: 18px;
+        z-index: 50;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        background: #25d366;
+        color: #fff;
+        font-size: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
+        transition: 0.3s ease;
+      }
+      .wa-float:hover {
+        transform: scale(1.1);
+        background: #1da851;
+      }
+      .langbar {
+        position: absolute;
+        top: 12px;
+        right: 16px;
+        z-index: 40;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        background: #fff8e7;
+        border-radius: 30px;
+        padding: 4px 6px 4px 12px;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.25);
+      }
+      .langbar select {
+        font: inherit;
+        font-weight: bold;
+        font-size: 14px;
+        border: 0;
+        background: transparent;
+        color: #4a2c1a;
+        padding: 6px 4px;
+        max-width: 150px;
+        cursor: pointer;
+      }
+      .langbar select:focus-visible {
+        outline: 3px solid #e8a15b;
+        border-radius: 20px;
+      }
+      #langMsg {
+        position: absolute;
+        top: 56px;
+        right: 16px;
+        z-index: 40;
+        max-width: 240px;
+        background: #fbe3b0;
+        color: #3d2b1f;
+        padding: 8px 12px;
+        border-radius: 14px;
+        font-size: 13px;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+      }
+      #langMsg[hidden] {
+        display: none;
+      }
+      #gt_el {
+        position: absolute;
+        left: -9999px;
+        top: 0;
+      }
+      .skiptranslate iframe,
+      .goog-te-banner-frame {
+        display: none !important;
+      }
+      body {
+        top: 0 !important;
+      }
+      .goog-tooltip,
+      .goog-tooltip:hover {
+        display: none !important;
+      }
+      .goog-text-highlight {
+        background: none !important;
+        box-shadow: none !important;
+      }
+      footer {
+        text-align: center;
+        padding: 30px 20px 40px;
+        background: #4a2c1a;
+        color: #fcecd2;
+        margin-top: 40px;
+        border-radius: 30px 30px 0 0;
+      }
+      footer b {
+        color: #e8a15b;
+      }
+      @media (max-width: 600px) {
+        .menu {
+          position: static;
+          display: block;
+          width: max-content;
+          margin: 20px auto 0;
+        }
+        .box1 {
+          padding-bottom: 70px;
+        }
+        .news-ticker {
+          width: 90%;
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .ticker-text {
+          animation: none;
+          padding-left: 10px;
+        }
+        html {
+          scroll-behavior: auto;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="langbar notranslate" translate="no">
+      <span aria-hidden="true">🌐</span>
+      <select id="lang" aria-label="Choose language">
+        <option value="en">English</option>
+        <option value="fr">Français</option>
+        <option value="ar">العربية</option>
+        <option value="es">Español</option>
+        <option value="de">Deutsch</option>
+        <option value="it">Italiano</option>
+        <option value="pt">Português</option>
+        <option value="nl">Nederlands</option>
+        <option value="tr">Türkçe</option>
+        <option value="ru">Русский</option>
+        <option value="zh-CN">中文</option>
+        <option value="ja">日本語</option>
+      </select>
+    </div>
+    <div id="langMsg" class="notranslate" translate="no" hidden></div>
+    <div id="gt_el"></div>
+    <div class="box1">
+      <h1>MORE THAN FOOD<br />IT'S A FLAVOR EXPERIENCE</h1>
+      <p>
+        Delicious burgers, crispy tacos, cheesy pizza, and freshly made
+        sandwiches, prepared with passion and served with flavor.
+      </p>
+      <div class="food-types">
+        <span>🍔 BURGERS</span>
+        <span>🌮 TACOS</span>
+        <span>🍕 PIZZA</span>
+        <span>🥪 SANDWICHES</span>
+        <div class="news-ticker">
+          <div class="ticker-text">
+            🍔 Welcome to M-KING Food! 🌮 Delicious food, amazing taste, and
+            fast service! 🍕 Check the menu and enjoy!
+          </div>
+        </div>
+      </div>
+      <a href="#menu" class="menu">view menu</a>
+    </div>
+    <svg
+      class="hero-img notranslate"
+      translate="no"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 400 400"
+      role="img"
+      aria-label="M-KING Food logo"
+    >
+      <!-- dome badge -->
+      <path
+        d="M60 266V170C60 90 120 40 200 40S340 90 340 170V266Z"
+        fill="#f6d9b0"
+        stroke="#4a2c1a"
+        stroke-width="8"
+      />
+      <circle cx="200" cy="88" r="22" fill="#f3b982" />
+      <path
+        d="M64 205L120 135L150 170L192 112L240 178L282 142L336 208V262H64Z"
+        fill="#c98a5a"
+        opacity=".8"
+      />
+      <!-- crown -->
+      <path
+        d="M168 60L160 24L182 42L200 14L218 42L240 24L232 60Z"
+        fill="#f2b632"
+        stroke="#4a2c1a"
+        stroke-width="4"
+        stroke-linejoin="round"
+      />
+      <rect
+        x="168"
+        y="58"
+        width="64"
+        height="9"
+        rx="3"
+        fill="#f2b632"
+        stroke="#4a2c1a"
+        stroke-width="4"
+      />
+      <circle cx="160" cy="24" r="4" fill="#d6382c" />
+      <circle cx="200" cy="14" r="4" fill="#d6382c" />
+      <circle cx="240" cy="24" r="4" fill="#d6382c" />
+      <!-- fries -->
+      <g stroke="#c98a1a" stroke-width="1.5" fill="#f6c445">
+        <rect
+          x="280"
+          y="136"
+          width="8"
+          height="52"
+          rx="2"
+          transform="rotate(-10 284 188)"
+        />
+        <rect
+          x="291"
+          y="126"
+          width="8"
+          height="60"
+          rx="2"
+          transform="rotate(-3 295 186)"
+        />
+        <rect
+          x="302"
+          y="124"
+          width="8"
+          height="62"
+          rx="2"
+          transform="rotate(4 306 186)"
+        />
+        <rect
+          x="313"
+          y="132"
+          width="8"
+          height="54"
+          rx="2"
+          transform="rotate(11 317 186)"
+        />
+      </g>
+      <path
+        d="M276 250L284 184H326L318 250Z"
+        fill="#d6382c"
+        stroke="#4a2c1a"
+        stroke-width="4"
+        stroke-linejoin="round"
+      />
+      <!-- pizza slice -->
+      <path
+        d="M300 254L330 150Q352 150 374 164Z"
+        fill="#f2b632"
+        stroke="#c98a1a"
+        stroke-width="3"
+        stroke-linejoin="round"
+      />
+      <path
+        d="M330 150Q352 150 374 164"
+        fill="none"
+        stroke="#d68a3c"
+        stroke-width="10"
+        stroke-linecap="round"
+      />
+      <circle cx="338" cy="188" r="8" fill="#c9302c" />
+      <circle cx="322" cy="222" r="8" fill="#c9302c" />
+      <circle cx="355" cy="174" r="6" fill="#c9302c" />
+      <!-- taco -->
+      <g transform="rotate(-10 70 240)">
+        <path
+          d="M26 244A44 44 0 0 1 114 244Z"
+          fill="#f2b632"
+          stroke="#4a2c1a"
+          stroke-width="4"
+          stroke-linejoin="round"
+        />
+        <path
+          d="M36 228Q46 210 56 226T78 224T100 226"
+          fill="none"
+          stroke="#5aa83a"
+          stroke-width="8"
+          stroke-linecap="round"
+        />
+        <path
+          d="M44 238Q70 222 98 238"
+          fill="none"
+          stroke="#7a4a2a"
+          stroke-width="7"
+          stroke-linecap="round"
+        />
+        <circle cx="62" cy="216" r="5" fill="#d6382c" />
+        <circle cx="84" cy="214" r="5" fill="#d6382c" />
+      </g>
+      <!-- burger -->
+      <g stroke="#4a2c1a" stroke-linejoin="round">
+        <path
+          d="M122 230H278V240C278 252 268 256 258 256H142C132 256 122 252 122 240Z"
+          fill="#e39a45"
+          stroke-width="4"
+        />
+        <rect
+          x="116"
+          y="208"
+          width="168"
+          height="26"
+          rx="13"
+          fill="#4a2c1a"
+          stroke-width="3"
+        />
+        <path
+          d="M118 200H282L266 224L248 205L226 230L204 205L182 226L162 205L142 222Z"
+          fill="#f7c531"
+          stroke-width="3"
+        />
+        <rect
+          x="122"
+          y="188"
+          width="156"
+          height="15"
+          rx="7"
+          fill="#d6382c"
+          stroke-width="3"
+        />
+        <path
+          d="M114 178Q124 160 138 176T162 176T186 176T210 176T234 176T258 176T286 178V192H114Z"
+          fill="#5aa83a"
+          stroke="#2f6b1f"
+          stroke-width="3"
+        />
+        <path
+          d="M122 176C120 120 156 98 200 98S280 120 278 176Z"
+          fill="#e39a45"
+          stroke-width="4"
+        />
+      </g>
+      <g fill="#fff3d6">
+        <ellipse
+          cx="168"
+          cy="124"
+          rx="6"
+          ry="3"
+          transform="rotate(-25 168 124)"
+        />
+        <ellipse cx="196" cy="116" rx="6" ry="3" />
+        <ellipse
+          cx="226"
+          cy="124"
+          rx="6"
+          ry="3"
+          transform="rotate(25 226 124)"
+        />
+        <ellipse
+          cx="182"
+          cy="144"
+          rx="6"
+          ry="3"
+          transform="rotate(-10 182 144)"
+        />
+        <ellipse
+          cx="214"
+          cy="144"
+          rx="6"
+          ry="3"
+          transform="rotate(10 214 144)"
+        />
+        <ellipse
+          cx="150"
+          cy="150"
+          rx="5"
+          ry="2.5"
+          transform="rotate(-35 150 150)"
+        />
+        <ellipse
+          cx="250"
+          cy="150"
+          rx="5"
+          ry="2.5"
+          transform="rotate(35 250 150)"
+        />
+      </g>
+      <!-- banner -->
+      <rect x="24" y="260" width="352" height="124" rx="30" fill="#4a2c1a" />
+      <rect x="32" y="268" width="336" height="108" rx="24" fill="#f7e3c3" />
+      <rect
+        x="40"
+        y="276"
+        width="320"
+        height="92"
+        rx="18"
+        fill="none"
+        stroke="#e8a15b"
+        stroke-width="3"
+      />
+      <text
+        x="200"
+        y="326"
+        text-anchor="middle"
+        textLength="270"
+        lengthAdjust="spacingAndGlyphs"
+        font-family="Impact,'Arial Black',sans-serif"
+        font-size="64"
+        font-style="italic"
+        font-weight="900"
+        fill="#4a2c1a"
+      >
+        <tspan fill="#d9822b">M-</tspan>
+        KING
+      </text>
+      <path
+        d="M66 336Q200 322 334 336"
+        fill="none"
+        stroke="#e8a15b"
+        stroke-width="5"
+        stroke-linecap="round"
+      />
+      <text
+        x="200"
+        y="360"
+        text-anchor="middle"
+        font-family="'Arial Black',Impact,sans-serif"
+        font-size="19"
+        letter-spacing="9"
+        fill="#4a2c1a"
+      >
+        FOOD
+      </text>
+      <path
+        d="M70 354H128M272 354H330"
+        stroke="#4a2c1a"
+        stroke-width="3"
+        stroke-linecap="round"
+      />
+    </svg>
+
+    <section id="menu">
+      <h2>Our Menu</h2>
+      <p class="sub">All prices in Moroccan dirhams (DH)</p>
+      <p class="hint">👆 Tap a price to order that dish on WhatsApp</p>
+      <div class="tabs" id="tabs" role="tablist"></div>
+      <div id="groups"></div>
+    </section>
+
+    <section id="info">
+      <div class="card">
+        <h2>Visit us</h2>
+        <p><b>Address:</b> coin, Midelt 54350</p>
+        <p>
+          <b>Phone:</b>
+          <a class="tel" href="tel:+212636035852">06 36 03 58 52</a>
+        </p>
+        <p>
+          <a class="btn" href="tel:+212636035852">📞 Call now</a
+          ><a
+            class="btn wa"
+            href="https://wa.me/212636035852?text=Hello%20M-KING%20Food%2C%20I%20would%20like%20to%20ask%20something."
+            target="_blank"
+            rel="noopener"
+            >💬 WhatsApp</a
+          >
+        </p>
+        <h2 style="margin-top: 22px">Opening hours</h2>
+        <table class="hours" id="hours"></table>
+        <div class="warn">
+          ⚠️ On Independence Day the hours may be modified.
+        </div>
+      </div>
+
+      <div class="card" id="rate">
+        <h2>Rate our restaurant</h2>
+        <p>How was your experience? Tap the stars!</p>
+        <div
+          class="stars"
+          id="stars"
+          role="radiogroup"
+          aria-label="Rating"
+        ></div>
+        <p class="rate-label" id="rateLabel">&nbsp;</p>
+        <input
+          id="rName"
+          type="text"
+          placeholder="Your name (optional)"
+          maxlength="40"
+        />
+        <textarea
+          id="rText"
+          rows="3"
+          placeholder="Tell us what you liked (optional)"
+          maxlength="300"
+        ></textarea>
+        <button class="btn" id="rSend" disabled>Send my rating</button>
+        <p class="thanks" id="thanks" hidden>
+          Thank you! Your rating helps M-KING Food get better 💛
+        </p>
+      </div>
+    </section>
+
+    <a
+      class="wa-float"
+      href="https://wa.me/212636035852?text=Hello%20M-KING%20Food%2C%20I%20would%20like%20to%20order."
+      target="_blank"
+      rel="noopener"
+      aria-label="Chat with us on WhatsApp"
+      >💬</a
+    >
+
+    <footer>
+      <b class="notranslate" translate="no">M-KING Food</b><br />
+      Fast food, pizza &amp; grill · Thank you for your visit!
+    </footer>
+
+    <script>
+      // item: [name, description, price1, price2]
+      const same = [
+        ["Viande hachée", "", 25],
+        ["Dinde", "", 22],
+        ["Saucisse", "", 22],
+        ["Thon", "", 22],
+        ["Poulet pané", "", 25],
+        ["Mixte", "", 25],
+        ["Fruits de mer", "", 30],
+      ];
+      const MENU = {
+        "Sandwichs & Burgers": [
+          { t: "Sandwichs", i: same },
+          { t: "Paninis", i: same },
+          {
+            t: "Burgers",
+            i: [
+              ["Burger classique", "", 25],
+              ["Chicken burger", "", 30],
+              ["Cheese burger", "", 30],
+              ["Chicken cheese burger", "", 35],
+              ["Double cheese burger", "", 35],
+              ["Burger Al Madina", "Steak viande hachée, poulet, jambon", 40],
+            ],
+          },
+          {
+            t: "Chawarma",
+            i: [
+              ["Chawarma sandwich", "", 25],
+              ["Chawarma double fromage", "", 30],
+              ["Chawarma sur plat", "", 40],
+            ],
+          },
+          {
+            t: "Baguitto",
+            i: [
+              ["Dinde", "", 40],
+              ["Viande hachée", "", 45],
+              ["Mixte", "", 45],
+            ],
+          },
+        ],
+        Tacos: [
+          {
+            t: "Tacos",
+            cols: ["Normal", "XL"],
+            i: [
+              ["Dinde", "", 30, 45],
+              ["Poulet pané", "", 35, 50],
+              ["Saucisse", "", 30, 45],
+              ["Nuggets", "", 35, 50],
+              ["Chawarma", "", 35, 50],
+              ["Mixte", "", 35, 50],
+              ["Cordon bleu", "", 35, 50],
+              ["2 viandes", "", 35, 50],
+              ["Magic", "Dinde, jambon", 37, 55],
+              ["Denver", "Viande hachée, nugget", 37, 55],
+              ["Al Madina", "Viande hachée, nugget, jambon", 40, 60],
+              ["Fruits de mer", "", 45, 65],
+            ],
+          },
+          {
+            t: "Tacos gratiné",
+            cols: ["Normal", "XL"],
+            i: [["Supplément gratiné", "", 7, 10]],
+            n: "Extras: sauce 3 DH · cheddar 3 DH",
+          },
+        ],
+        Pizzas: [
+          {
+            t: "Pizzas",
+            cols: ["Solo", "Duo"],
+            i: [
+              ["Margarita", "Sauce tomate, mozzarella, olive, origan", 30, 40],
+              [
+                "Végétarienne",
+                "Sauce tomate, mozzarella, champignons, poivron, tomate, oignon, olive, origan",
+                40,
+                55,
+              ],
+              ["Thon", "Sauce tomate, mozzarella, thon, origan", 40, 55],
+              ["Dinde", "Sauce tomate, mozzarella, dinde, origan", 40, 55],
+              [
+                "Bolognaise",
+                "Sauce tomate, mozzarella, viande hachée, olive, origan",
+                40,
+                55,
+              ],
+              [
+                "4 Saisons",
+                "Sauce tomate, mozzarella, champignons, viande hachée, dinde, crevettes, origan",
+                45,
+                65,
+              ],
+              [
+                "Fruits de mer",
+                "Sauce tomate, mozzarella, crevettes, calamars, surimi, champignons, origan",
+                45,
+                65,
+              ],
+              [
+                "Mixte",
+                "Sauce tomate, mozzarella, champignons, viande hachée, dinde, origan",
+                45,
+                65,
+              ],
+              [
+                "Al Madina Royale",
+                "Sauce tomate, viande hachée, crevettes, calamars, jambon, origan",
+                50,
+                70,
+              ],
+            ],
+          },
+        ],
+        "Plats & Pâtes": [
+          {
+            t: "Plats",
+            i: [
+              ["Chicken crispy", "", 40],
+              ["Escalope de poulet pané", "", 40],
+              ["Brochette dinde", "", 40],
+              ["Plat nuggets (7 pcs)", "", 40],
+              ["Plat chawarma", "", 40],
+              ["Cordon bleu", "", 45],
+              ["Émincé de dinde", "", 45],
+              ["Kefta grillée", "Sauce aux champignons", 45],
+              ["Mixte grillé", "Dinde, viande hachée, saucisse", 50],
+              ["Plat mixte", "", 50],
+            ],
+          },
+          {
+            t: "Pâtes",
+            i: [
+              ["Bolognaise", "Sauce tomate, viande hachée, fromage", 35],
+              ["Carbonara", "Jambon de dinde", 35],
+              ["Al Fredo", "Poulet, champignons", 35],
+              ["Fruits de mer", "Crevettes, calamars, champignons, surimi", 40],
+            ],
+            n: "Spaghetti, tagliatelle or penne",
+          },
+          {
+            t: "Pasticcio",
+            i: [
+              ["Dinde", "", 35],
+              ["Saucisse", "", 35],
+              ["Jambon dinde", "", 35],
+              ["Viande hachée", "", 37],
+              ["Mixte", "Viande hachée, dinde, saucisse", 37],
+              ["Fruits de mer", "Crevettes, calamars, champignons", 45],
+              ["Al Madina", "Nuggets, viande hachée, jambon", 40],
+            ],
+          },
+        ],
+        Starters: [
+          {
+            t: "Starters",
+            i: [
+              ["Nuggets 4 pcs", "", 15],
+              ["Nuggets 6 pcs", "", 20],
+              ["Oignon rings 6 pcs", "", 20],
+              ["Wings 4 pcs", "", 20],
+              ["Mozzarella sticks 6 pcs", "", 25],
+              ["Wings 6 pcs", "", 25],
+            ],
+          },
+          {
+            t: "Mega box",
+            i: [
+              [
+                "Nuggets, mozzarella sticks, oignon rings, potatoes, sauce au choix",
+                "",
+                40,
+              ],
+            ],
+          },
+          {
+            t: "Suppléments",
+            i: [
+              ["Frites", "", 7],
+              ["Briwat", "", 7],
+              ["Penne", "", 10],
+              ["Pastilla", "", 25],
+              ["Potatoes", "", 10],
+            ],
+          },
+        ],
+        Salades: [
+          {
+            t: "Salades",
+            i: [
+              [
+                "Salade variée",
+                "Laitue, tomate, concombre, pomme de terre, carottes, riz, thon, œufs durs, maïs, olive",
+                25,
+              ],
+              ["Pâte au thon", "Pâte, thon, maïs, fromage, olive, tomate", 25],
+              ["Salade mixte", "Légumes variés, dinde, œufs, olive, maïs", 25],
+              [
+                "Salade du chef",
+                "Pâte, surimi, thon, maïs, jambon, olive, nuggets, fromage, mayonnaise",
+                30,
+              ],
+              ["Salade Al Madina", "Légumes variés, crevettes, fruits", 30],
+            ],
+          },
+        ],
+        "Boissons & Desserts": [
+          {
+            t: "Boissons",
+            i: [
+              ["Canette", "", 6],
+              ["Oulmes", "", 7],
+              ["Eau minérale 1.5L", "", 10],
+              ["Canette 33cl", "", 10],
+            ],
+          },
+          {
+            t: "Jus",
+            i: [
+              ["Jus d'orange", "", 15],
+              ["Jus de banane", "", 15],
+              ["Jus de pomme", "", 15],
+              ["Jus d'avocat", "", 17],
+              ["Jus panaché", "", 17],
+            ],
+          },
+          {
+            t: "Desserts",
+            i: [
+              ["Salade orange", "Fruits frais, jus d'orange, fruits secs", 17],
+              ["Cheese cake", "", 15],
+            ],
+          },
+        ],
+      };
+
+      const tabs = document.getElementById("tabs");
+      const groups = document.getElementById("groups");
+      const fmt = (n) => n.toFixed(2).replace(".00", "") + " DH";
+
+      Object.entries(MENU).forEach(([name, secs], idx) => {
+        const b = document.createElement("button");
+        b.textContent = name;
+        b.setAttribute("role", "tab");
+        tabs.appendChild(b);
+
+        const g = document.createElement("div");
+        g.className = "group";
+        g.innerHTML = secs
+          .map((s) => {
+            const head = s.cols ? `<small>${s.cols.join(" / ")}</small>` : "";
+            const rows = s.i
+              .map(
+                ([n, d, p1, p2]) => `
+            <div class="row">
+              <div><b>${n}</b>${d ? `<i>${d}</i>` : ""}</div>
+              <div class="pr">${[p1, p2]
+                .filter(Boolean)
+                .map(
+                  (pr, k) =>
+                    `<button class="ord" data-m="${(s.t + ": " + n + (s.cols ? " (" + s.cols[k] + ")" : "") + " - " + fmt(pr)).replace(/"/g, "&quot;")}" title="Order on WhatsApp">${fmt(pr)}</button>`,
+                )
+                .join("")}</div>
+            </div>`,
+              )
+              .join("");
+            return `<div class="sec"><h3>${s.t}${head}</h3>${rows}${s.n ? `<p class="note">${s.n}</p>` : ""}</div>`;
+          })
+          .join("");
+        groups.appendChild(g);
+
+        b.onclick = () => {
+          [...tabs.children].forEach((x, k) => {
+            x.classList.toggle("on", x === b);
+            x.setAttribute("aria-selected", x === b);
+            groups.children[k].classList.toggle("on", x === b);
+          });
+        };
+        if (idx === 0) b.click();
+      });
+
+      // ---------- opening hours ----------
+      const DAYS = [
+        "Sunday",
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+      ];
+      const todayIdx = new Date().getDay();
+      document.getElementById("hours").innerHTML = [1, 2, 3, 4, 5, 6, 0]
+        .map(
+          (d) =>
+            `<tr class="${d === todayIdx ? "today" : ""}"><td>${DAYS[d]}</td><td>11:00 – 23:00</td></tr>`,
+        )
+        .join("");
+
+      // ---------- star rating ----------
+      const WHATSAPP = "212636035852"; // owner's number (international format, no +)
+      const LABELS = [
+        "",
+        "Poor 😕",
+        "Fair 🙂",
+        "Good 😊",
+        "Very good 😋",
+        "Excellent! 🤩",
+      ];
+      const starsEl = document.getElementById("stars");
+      const sendBtn = document.getElementById("rSend");
+      let rating = 0;
+      for (let i = 1; i <= 5; i++) {
+        const b = document.createElement("button");
+        b.type = "button";
+        b.textContent = "★";
+        b.setAttribute("role", "radio");
+        b.setAttribute("aria-label", i + (i === 1 ? " star" : " stars"));
+        b.onmouseenter = () => paint(i);
+        b.onfocus = () => paint(i);
+        b.onclick = () => {
+          rating = i;
+          paint(i);
+          sendBtn.disabled = false;
+        };
+        starsEl.appendChild(b);
+      }
+      starsEl.onmouseleave = () => paint(rating);
+      function paint(n) {
+        [...starsEl.children].forEach((b, k) => {
+          b.classList.toggle("on", k < n);
+          b.setAttribute("aria-checked", k + 1 === rating);
+        });
+        document.getElementById("rateLabel").textContent = tr(LABELS[n] || "");
+      }
+      sendBtn.onclick = () => {
+        const name = document.getElementById("rName").value.trim();
+        const text = document.getElementById("rText").value.trim();
+        const msg =
+          `M-KING Food rating: ${"★".repeat(rating)}${"☆".repeat(5 - rating)} (${rating}/5)` +
+          (text ? `\nComment: ${text}` : "") +
+          (name ? `\nFrom: ${name}` : "");
+        try {
+          localStorage.setItem("mking-rating", String(rating));
+        } catch (e) {}
+        document.getElementById("thanks").hidden = false;
+        window.open(
+          `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(msg)}`,
+          "_blank",
+        );
+      };
+
+      // ---------- order a dish on WhatsApp ----------
+      document.addEventListener("click", (e) => {
+        const b = e.target.closest(".ord");
+        if (!b) return;
+        const msg = "Hello M-KING Food, I would like to order:\n" + b.dataset.m;
+        window.open(
+          "https://wa.me/212636035852?text=" + encodeURIComponent(msg),
+          "_blank",
+        );
+      });
+
+      // ---------- translation: French + Arabic built in (work offline), other languages via Google ----------
+      const T = {
+        fr: {
+          "MORE THAN FOOD": "PLUS QUE DE LA CUISINE",
+          "IT'S A FLAVOR EXPERIENCE": "UNE EXPÉRIENCE DE SAVEURS",
+          "Delicious burgers, crispy tacos, cheesy pizza, and freshly made sandwiches, prepared with passion and served with flavor.":
+            "Des burgers délicieux, des tacos croustillants, des pizzas bien garnies et des sandwichs frais, préparés avec passion et servis avec saveur.",
+          "🍔 Welcome to M-KING Food! 🌮 Delicious food, amazing taste, and fast service! 🍕 Check the menu and enjoy!":
+            "🍔 Bienvenue chez M-KING Food ! 🌮 Une cuisine délicieuse, un goût incroyable et un service rapide ! 🍕 Découvrez le menu et régalez-vous !",
+          "view menu": "voir le menu",
+          "Our Menu": "Notre menu",
+          "All prices in Moroccan dirhams (DH)":
+            "Tous les prix sont en dirhams marocains (DH)",
+          "👆 Tap a price to order that dish on WhatsApp":
+            "👆 Touchez un prix pour commander ce plat sur WhatsApp",
+          Starters: "Entrées",
+          "Spaghetti, tagliatelle or penne": "Spaghetti, tagliatelle ou penne",
+          "Extras: sauce 3 DH · cheddar 3 DH":
+            "Suppléments : sauce 3 DH · cheddar 3 DH",
+          "Visit us": "Nous trouver",
+          "Address:": "Adresse :",
+          "Phone:": "Téléphone :",
+          "📞 Call now": "📞 Appeler",
+          "Opening hours": "Horaires d'ouverture",
+          Monday: "Lundi",
+          Tuesday: "Mardi",
+          Wednesday: "Mercredi",
+          Thursday: "Jeudi",
+          Friday: "Vendredi",
+          Saturday: "Samedi",
+          Sunday: "Dimanche",
+          "⚠️ On Independence Day the hours may be modified.":
+            "⚠️ À la Fête de l'Indépendance, les horaires peuvent être modifiés.",
+          "Rate our restaurant": "Notez notre restaurant",
+          "How was your experience? Tap the stars!":
+            "Comment était votre expérience ? Touchez les étoiles !",
+          "Poor 😕": "Mauvais 😕",
+          "Fair 🙂": "Moyen 🙂",
+          "Good 😊": "Bien 😊",
+          "Very good 😋": "Très bien 😋",
+          "Excellent! 🤩": "Excellent ! 🤩",
+          "Send my rating": "Envoyer ma note",
+          "Thank you! Your rating helps M-KING Food get better 💛":
+            "Merci ! Votre avis aide M-KING Food à s'améliorer 💛",
+          "Your name (optional)": "Votre nom (facultatif)",
+          "Tell us what you liked (optional)":
+            "Dites-nous ce que vous avez aimé (facultatif)",
+          "Fast food, pizza & grill · Thank you for your visit!":
+            "Fast food, pizzas et grillades · Merci de votre visite !",
+        },
+        ar: {
+          "MORE THAN FOOD": "أكثر من مجرد طعام",
+          "IT'S A FLAVOR EXPERIENCE": "إنها تجربة نكهة",
+          "Delicious burgers, crispy tacos, cheesy pizza, and freshly made sandwiches, prepared with passion and served with flavor.":
+            "برغر لذيذ، تاكوس مقرمش، بيتزا بالجبن، وساندويتشات طازجة، تُحضَّر بشغف وتُقدَّم بنكهة.",
+          "🍔 BURGERS": "🍔 برغر",
+          "🌮 TACOS": "🌮 تاكوس",
+          "🍕 PIZZA": "🍕 بيتزا",
+          "🥪 SANDWICHES": "🥪 ساندويتشات",
+          "🍔 Welcome to M-KING Food! 🌮 Delicious food, amazing taste, and fast service! 🍕 Check the menu and enjoy!":
+            "🍔 مرحباً بكم في M-KING Food! 🌮 طعام لذيذ، مذاق رائع، وخدمة سريعة! 🍕 تصفحوا القائمة واستمتعوا!",
+          "view menu": "عرض القائمة",
+          "Our Menu": "قائمتنا",
+          "All prices in Moroccan dirhams (DH)":
+            "جميع الأسعار بالدرهم المغربي (DH)",
+          "👆 Tap a price to order that dish on WhatsApp":
+            "👆 اضغط على السعر لطلب الطبق عبر واتساب",
+          "Sandwichs & Burgers": "ساندويتشات وبرغر",
+          Tacos: "تاكوس",
+          Pizzas: "بيتزا",
+          "Plats & Pâtes": "أطباق ومعكرونة",
+          Starters: "المقبلات",
+          Salades: "سلطات",
+          "Boissons & Desserts": "مشروبات وحلويات",
+          Sandwichs: "ساندويتشات",
+          Paninis: "بانيني",
+          Burgers: "برغر",
+          Chawarma: "شاورما",
+          Baguitto: "باغيتو",
+          "Tacos gratiné": "تاكوس غراتان",
+          Plats: "أطباق",
+          Pâtes: "معكرونة",
+          Pasticcio: "باستيتشيو",
+          "Mega box": "ميغا بوكس",
+          Suppléments: "إضافات",
+          Boissons: "مشروبات",
+          Jus: "عصائر",
+          Desserts: "حلويات",
+          "Normal / XL": "عادي / كبير",
+          "Solo / Duo": "فردي / ثنائي",
+          "Spaghetti, tagliatelle or penne": "سباغيتي أو تاغلياتيلي أو بيني",
+          "Extras: sauce 3 DH · cheddar 3 DH": "إضافات: صلصة 3 DH · شيدر 3 DH",
+          "Visit us": "زورونا",
+          "Address:": "العنوان:",
+          "Phone:": "الهاتف:",
+          "📞 Call now": "📞 اتصل الآن",
+          "💬 WhatsApp": "💬 واتساب",
+          "Opening hours": "ساعات العمل",
+          Monday: "الاثنين",
+          Tuesday: "الثلاثاء",
+          Wednesday: "الأربعاء",
+          Thursday: "الخميس",
+          Friday: "الجمعة",
+          Saturday: "السبت",
+          Sunday: "الأحد",
+          "⚠️ On Independence Day the hours may be modified.":
+            "⚠️ في عيد الاستقلال قد تتغير ساعات العمل.",
+          "Rate our restaurant": "قيّموا مطعمنا",
+          "How was your experience? Tap the stars!":
+            "كيف كانت تجربتكم؟ اضغطوا على النجوم!",
+          "Poor 😕": "سيئ 😕",
+          "Fair 🙂": "مقبول 🙂",
+          "Good 😊": "جيد 😊",
+          "Very good 😋": "جيد جداً 😋",
+          "Excellent! 🤩": "ممتاز! 🤩",
+          "Send my rating": "إرسال تقييمي",
+          "Thank you! Your rating helps M-KING Food get better 💛":
+            "شكراً لكم! تقييمكم يساعد M-KING Food على التحسن 💛",
+          "Your name (optional)": "اسمك (اختياري)",
+          "Tell us what you liked (optional)": "أخبرنا بما أعجبك (اختياري)",
+          "Fast food, pizza & grill · Thank you for your visit!":
+            "وجبات سريعة، بيتزا ومشويات · شكراً لزيارتكم!",
+        },
+      };
+      let lang = "en",
+        gActive = false;
+      const origText = new WeakMap();
+      const langSel = document.getElementById("lang");
+      const langMsg = document.getElementById("langMsg");
+      function tr(str) {
+        return (lang !== "en" && T[lang] && T[lang][str]) || str;
+      }
+      function applyLang(l) {
+        lang = l;
+        document.documentElement.dir = l === "ar" ? "rtl" : "ltr";
+        const w = document.createTreeWalker(
+          document.body,
+          NodeFilter.SHOW_TEXT,
+          {
+            acceptNode: (n) =>
+              n.parentElement.closest("script,style,svg,textarea,.notranslate")
+                ? NodeFilter.FILTER_REJECT
+                : NodeFilter.FILTER_ACCEPT,
+          },
+        );
+        for (let n; (n = w.nextNode()); ) {
+          if (!origText.has(n)) origText.set(n, n.nodeValue);
+          const o = origText.get(n),
+            key = o.replace(/\s+/g, " ").trim();
+          if (!key) continue;
+          let t = (l !== "en" && T[l] && T[l][key]) || key;
+          if (l === "ar") t = t.replace(/(\d+)\s*DH/g, "$1 درهم");
+          n.nodeValue =
+            t === key ? o : o.match(/^\s*/)[0] + t + o.match(/\s*$/)[0];
+        }
+        [
+          ["rName", "Your name (optional)"],
+          ["rText", "Tell us what you liked (optional)"],
+        ].forEach(([id, k]) => {
+          document.getElementById(id).placeholder = tr(k);
+        });
+        const cur = [...starsEl.children].filter((b) =>
+          b.classList.contains("on"),
+        ).length;
+        document.getElementById("rateLabel").textContent = rating
+          ? tr(LABELS[rating])
+          : "";
+      }
+      function clearGoogle() {
+        const x = "=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=/";
+        document.cookie = "googtrans" + x;
+        document.cookie = "googtrans" + x + ";domain=" + location.hostname;
+      }
+      function note(msg) {
+        langMsg.textContent = msg;
+        langMsg.hidden = !msg;
+      }
+      function googleTranslateElementInit() {
+        new google.translate.TranslateElement(
+          { pageLanguage: "en", autoDisplay: false },
+          "gt_el",
+        );
+      }
+      function getCombo() {
+        return document.querySelector(".goog-te-combo");
+      }
+      function fillAllLanguages() {
+        const combo = getCombo();
+        if (!combo || combo.options.length < 5) return;
+        const keep = ["en", "fr", "ar"],
+          cur = langSel.value;
+        langSel.innerHTML =
+          '<option value="en">English</option><option value="fr">Français</option><option value="ar">العربية</option>' +
+          [...combo.options]
+            .filter((o) => o.value && !keep.includes(o.value))
+            .map((o) => `<option value="${o.value}">${o.text}</option>`)
+            .join("");
+        langSel.value = cur;
+      }
+      langSel.onchange = () => {
+        const v = langSel.value;
+        if (v === "en" || v === "fr" || v === "ar") {
+          if (gActive) {
+            clearGoogle();
+            try {
+              localStorage.setItem("mking-lang", v);
+            } catch (e) {}
+            location.reload();
+            return;
+          }
+          applyLang(v);
+          note("");
+          try {
+            localStorage.setItem("mking-lang", v);
+          } catch (e) {}
+          return;
+        }
+        applyLang("en");
+        note("Translating…");
+        let tries = 0;
+        const t = setInterval(() => {
+          const combo = getCombo();
+          if (combo) {
+            clearInterval(t);
+            gActive = true;
+            combo.value = v;
+            combo.dispatchEvent(new Event("change"));
+            note("");
+            fillAllLanguages();
+            langSel.value = v;
+          } else if (++tries > 24) {
+            clearInterval(t);
+            note(
+              "Translation needs an internet connection. French and Arabic work offline.",
+            );
+            langSel.value = "en";
+          }
+        }, 250);
+      };
+      try {
+        const sv = localStorage.getItem("mking-lang");
+        if (sv && T[sv]) {
+          langSel.value = sv;
+          applyLang(sv);
+        }
+      } catch (e) {}
+      const gs = document.createElement("script");
+      gs.src =
+        "https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit";
+      gs.async = true;
+      gs.onload = () => setTimeout(fillAllLanguages, 1200);
+      document.head.appendChild(gs);
+    </script>
+  </body>
+</html>
